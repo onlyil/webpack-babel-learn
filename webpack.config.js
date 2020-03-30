@@ -1,7 +1,7 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-03-29 09:49:37
- * @LastEditTime: 2020-03-29 11:28:14
+ * @LastEditTime: 2020-03-30 23:21:33
  * @LastEditors: lin.cao
  * @Description: 
  * @FilePath: /webpack-babel-learn/webpack.config.js
@@ -18,6 +18,15 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.(css|less)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
       }
     ]
   },

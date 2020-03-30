@@ -1,11 +1,14 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-03-28 21:49:26
- * @LastEditTime: 2020-03-29 10:57:09
+ * @LastEditTime: 2020-03-30 23:11:52
  * @LastEditors: lin.cao
  * @Description: 
  * @FilePath: /webpack-babel-learn/src/index.js
  */
+import cssStyle from './style/css/index.css'
+import lessStyle from './style/less/index.less'
+
 // class WeEvent {
 //   constructor(name) {
 //     this.name = name
