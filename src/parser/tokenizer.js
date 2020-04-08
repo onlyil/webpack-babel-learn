@@ -1,9 +1,9 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-04-03 18:02:09
- * @LastEditTime: 2020-04-07 17:21:53
+ * @LastEditTime: 2020-04-08 12:08:35
  * @LastEditors: lin.cao
- * @Description: 
+ * @Description: 词法分析
  * @FilePath: /webpack-babel-learn/src/parser/tokenizer.js
  */
 function tokenizer (code) {
