@@ -67,4 +67,4 @@ function parser (tokens) {
     return ast
 }
 
-module.exports = parser
+export default parser

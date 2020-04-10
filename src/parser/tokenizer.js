@@ -1,7 +1,7 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-04-03 18:02:09
- * @LastEditTime: 2020-04-08 12:08:35
+ * @LastEditTime: 2020-04-10 15:56:16
  * @LastEditors: lin.cao
  * @Description: 词法分析
  * @FilePath: /webpack-babel-learn/src/parser/tokenizer.js
@@ -87,4 +87,4 @@ function tokenizer (code) {
     return tokens
 }
 
-module.exports = tokenizer
+export default tokenizer

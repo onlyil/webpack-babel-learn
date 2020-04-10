@@ -1,13 +1,14 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-04-07 15:35:12
- * @LastEditTime: 2020-04-08 19:28:03
+ * @LastEditTime: 2020-04-10 15:57:19
  * @LastEditors: lin.cao
  * @Description:
  * @FilePath: /webpack-babel-learn/src/parser/index.js
  */
-const tokenizer = require('./tokenizer')
-const parser = require('./parser')
+import tokenizer from './tokenizer'
+import parser from './parser'
+import traverser from './traverser'
 
 const tokens = tokenizer(`
 const a = 1
@@ -28,7 +29,7 @@ const a = 1
 
 const ast = parser(tokens)
 
-console.log(ast)
+// console.log(ast)
 // {
 //     type: 'Program',
 //     body: [
@@ -48,3 +49,21 @@ console.log(ast)
 //         }
 //     ]
 // }
+traverser(ast, {
+    VariableDeclaration(node, parent) {
+        node.kind = 'var'
+        console.log('const -> var')
+    },
+    Identifier(node, parent) {
+        node.name = 'name'
+        console.log('a -> name')
+    },
+})
+
+console.log(ast)
+
+export default {
+    tokenizer,
+    parser,
+    traverser,
+}
