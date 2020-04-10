@@ -1,7 +1,7 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-04-07 15:35:12
- * @LastEditTime: 2020-04-10 15:57:19
+ * @LastEditTime: 2020-04-10 18:50:22
  * @LastEditors: lin.cao
  * @Description:
  * @FilePath: /webpack-babel-learn/src/parser/index.js
@@ -9,6 +9,7 @@
 import tokenizer from './tokenizer'
 import parser from './parser'
 import traverser from './traverser'
+import generator from './generator'
 
 const tokens = tokenizer(`
 const a = 1
@@ -60,10 +61,13 @@ traverser(ast, {
     },
 })
 
-console.log(ast)
+// console.log(ast)
+
+console.log(generator(ast))
 
 export default {
     tokenizer,
     parser,
     traverser,
+    generator,
 }

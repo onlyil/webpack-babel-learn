@@ -1,7 +1,7 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-03-28 21:49:26
- * @LastEditTime: 2020-04-10 15:50:14
+ * @LastEditTime: 2020-04-10 18:53:15
  * @LastEditors: lin.cao
  * @Description: 
  * @FilePath: /webpack-babel-learn/src/index.js
@@ -22,4 +22,3 @@ import parser from './parser'
 // }
 
 const isHas = [1, 2, 3].includes(2)
-console.log(isHas)
