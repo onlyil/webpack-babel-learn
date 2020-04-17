@@ -1,7 +1,7 @@
 /*
  * @Author: lin.cao
  * @Date: 2020-04-07 15:35:12
- * @LastEditTime: 2020-04-10 18:50:22
+ * @LastEditTime: 2020-04-16 13:15:41
  * @LastEditors: lin.cao
  * @Description:
  * @FilePath: /webpack-babel-learn/src/parser/index.js
@@ -10,6 +10,7 @@ import tokenizer from './tokenizer'
 import parser from './parser'
 import traverser from './traverser'
 import generator from './generator'
+import visitor from './visitor'
 
 const tokens = tokenizer(`
 const a = 1
@@ -50,18 +51,7 @@ const ast = parser(tokens)
 //         }
 //     ]
 // }
-traverser(ast, {
-    VariableDeclaration(node, parent) {
-        node.kind = 'var'
-        console.log('const -> var')
-    },
-    Identifier(node, parent) {
-        node.name = 'name'
-        console.log('a -> name')
-    },
-})
-
-// console.log(ast)
+traverser(ast, visitor)
 
 console.log(generator(ast))
 
