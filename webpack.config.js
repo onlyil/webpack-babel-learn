@@ -37,7 +37,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
-      title: 'webpack learn',,
+      title: 'webpack learn',
       minify: {
         collapseWhitespace: !isDev,
         minifyCSS: !isDev,
