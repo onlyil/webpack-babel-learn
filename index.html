@@ -1,22 +1,15 @@
-<!--
- * @Author: lin.cao
- * @Date: 2020-03-29 10:35:13
- * @LastEditTime: 2020-03-30 22:49:58
- * @LastEditors: lin.cao
- * @Description: 
- * @FilePath: /webpack-babel-learn/index.html
- -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <%= require('raw-loader!./static/layout/meta.html').default %>
+  <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 
 <body>
   <p class="page-title">Hello World!</p>
+
+  <script><%= require('raw-loader?esModule=false!./static/js/flexible.js') %></script>
 </body>
 
 </html>
