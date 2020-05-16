@@ -7,7 +7,7 @@
   "scripts": {
     "compile": "npx babel src --out-dir lib --watch",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
-    "devBuild": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "devBuild": "cross-env NODE_ENV=development webpack --config webpack.config.js --devtool=none",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "devDependencies": {

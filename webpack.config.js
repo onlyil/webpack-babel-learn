@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
-
+const webpack = require('webpack')
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -49,5 +49,10 @@ module.exports = {
       filename: isDev ? '[name].css' : '[name].[contenthash:8].css',
     }),
     new OptimizeCssAssetsWebpackPlugin(),
-  ]
+    new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升
+
+  ],
+  optimization: {
+    usedExports: true, // 标记未使用的 export，tree-shaking 基于此，默认 production 启用
+  },
 }
