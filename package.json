@@ -6,9 +6,9 @@
   "license": "MIT",
   "scripts": {
     "compile": "npx babel src --out-dir lib --watch",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
-    "devBuild": "cross-env NODE_ENV=development webpack --config webpack.config.js --devtool=none",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
+    "dev": "cross-env NODE_ENV=development npx webpack-dev-server --config webpack.config.js",
+    "devBuild": "cross-env NODE_ENV=development npx webpack --config webpack.config.js --devtool=none",
+    "build": "cross-env NODE_ENV=production npx webpack --config webpack.config.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
