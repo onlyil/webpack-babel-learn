@@ -50,21 +50,21 @@ module.exports = {
       filename: isDev ? '[name].css' : '[name].[contenthash:8].css',
     }),
     new OptimizeCssAssetsWebpackPlugin(),
-    // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升
+    // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升，production 默认启用
 
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          mangle: false, // 标识符混淆
-          output: {
-            beautify: true, // 为方便查看代码使用 beautify
-          },
-        },
-      }),
-    ],
-    usedExports: true, // 标记未使用的 export，tree-shaking 基于此，默认 production 启用
-  },
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       terserOptions: {
+  //         mangle: false, // 标识符混淆
+  //         output: {
+  //           beautify: true, // 为方便查看代码使用 beautify
+  //         },
+  //       },
+  //     }),
+  //   ],
+  //   usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
+  // },
 }
