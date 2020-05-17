@@ -12,6 +12,7 @@ module.exports = {
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
   entry: {
     main: './src/index.js',
+    home: './src/home.js',
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
@@ -53,18 +54,28 @@ module.exports = {
     // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升，production 默认启用
 
   ],
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [
-  //     new TerserPlugin({
-  //       terserOptions: {
-  //         mangle: false, // 标识符混淆
-  //         output: {
-  //           beautify: true, // 为方便查看代码使用 beautify
-  //         },
-  //       },
-  //     }),
-  //   ],
-  //   usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
-  // },
+  optimization: {
+    // minimize: true,
+    // minimizer: [
+    //   new TerserPlugin({
+    //     terserOptions: {
+    //       mangle: false, // 标识符混淆
+    //       output: {
+    //         beautify: true, // 为方便查看代码使用 beautify
+    //       },
+    //     },
+    //   }),
+    // ],
+    // usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
+    splitChunks: {
+      chunks: 'all',
+      // cacheGroups: {
+      //   vue: {
+      //     test: '/vue/',
+      //     name: 'vue',
+      //     chunks: 'all',
+      //   },
+      // },
+    },
+  },
 }
