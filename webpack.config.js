@@ -69,13 +69,7 @@ module.exports = {
     // usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
     splitChunks: {
       chunks: 'all',
-      // cacheGroups: {
-      //   vue: {
-      //     test: '/vue/',
-      //     name: 'vue',
-      //     chunks: 'all',
-      //   },
-      // },
+      name: 'commons',
     },
   },
 }
