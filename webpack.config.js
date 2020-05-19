@@ -15,7 +15,7 @@ const config = {
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
   entry: {
     main: './src/index.js',
-    home: './src/home.js',
+    // home: './src/home.js',
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
@@ -58,6 +58,9 @@ const config = {
       filename: isDev ? '[name].css' : '[name].[contenthash:8].css',
     }),
     new OptimizeCssAssetsWebpackPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: require('./static/lib/vendors-manifest.json'),
+    }),
     // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升，production 默认启用
     // new BundleAnalyzerPlugin(), // 体积分析
 
