@@ -19,6 +19,7 @@ const config = {
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
+    chunkFilename: isDev ? '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
   },
   module: {
     rules: [
@@ -63,16 +64,17 @@ const config = {
   ],
   optimization: {
     // minimize: true,
-    // minimizer: [
-    //   new TerserPlugin({
-    //     terserOptions: {
-    //       mangle: false, // 标识符混淆
-    //       output: {
-    //         beautify: true, // 为方便查看代码使用 beautify
-    //       },
-    //     },
-    //   }),
-    // ],
+    minimizer: [
+      new TerserPlugin({
+        // terserOptions: {
+        //   mangle: false, // 标识符混淆
+        //   output: {
+        //     beautify: true, // 为方便查看代码使用 beautify
+        //   },
+        // },
+        parallel: true, // 并行压缩
+      }),
+    ],
     // usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
     splitChunks: {
       chunks: 'all',
