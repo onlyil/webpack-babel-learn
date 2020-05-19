@@ -2,12 +2,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
+const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const isDev = process.env.NODE_ENV === 'development';
+const smp = new SpeedMeasureWebpackPlugin();
 
-module.exports = {
+const config = {
   mode: isDev ? 'development' : 'production',
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
   entry: {
@@ -22,7 +25,10 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader'
+        use: [
+          'thread-loader',
+          'babel-loader',
+        ],
       },
       {
         test: /\.(css|less)$/,
@@ -32,8 +38,8 @@ module.exports = {
           { loader: 'postcss-loader', options: { sourceMap: isDev ? 'inline' : false } },
           { loader: 'less-loader', options: { sourceMap: isDev } },
         ]
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -52,6 +58,7 @@ module.exports = {
     }),
     new OptimizeCssAssetsWebpackPlugin(),
     // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升，production 默认启用
+    // new BundleAnalyzerPlugin(), // 体积分析
 
   ],
   optimization: {
@@ -73,3 +80,6 @@ module.exports = {
     },
   },
 }
+
+// module.exports = smp.wrap(config)
+module.exports = config
