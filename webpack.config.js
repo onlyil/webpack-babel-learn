@@ -6,6 +6,7 @@ const TerserPlugin = require('terser-webpack-plugin')
 const webpack = require('webpack')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 const isDev = process.env.NODE_ENV === 'development';
 const smp = new SpeedMeasureWebpackPlugin();
@@ -28,7 +29,7 @@ const config = {
         exclude: /(node_modules)/,
         use: [
           'thread-loader',
-          'babel-loader',
+          'babel-loader?cacheDirectory=true',
         ],
       },
       {
@@ -61,6 +62,7 @@ const config = {
     new webpack.DllReferencePlugin({
       manifest: require('./static/lib/vendors-manifest.json'),
     }),
+    new HardSourceWebpackPlugin(), // 模块缓存，速度提升明显
     // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升，production 默认启用
     // new BundleAnalyzerPlugin(), // 体积分析
 
@@ -76,6 +78,7 @@ const config = {
         //   },
         // },
         parallel: true, // 并行压缩
+        cache: true, // 压缩缓存，速度提升明显
       }),
     ],
     // usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
