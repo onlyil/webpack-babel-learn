@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "compile": "npx babel src --out-dir lib --watch",
-    "dev": "cross-env NODE_ENV=development npx webpack-dev-server --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development npx webpack-dev-server --hot --config webpack.config.js",
     "devBuild": "cross-env NODE_ENV=development npx webpack --config webpack.config.js --devtool=none",
     "build": "cross-env NODE_ENV=production npx webpack --config webpack.config.js",
     "dll": "npx webpack --config webpack.dll.js"
