@@ -15,7 +15,11 @@ import Vue from 'vue'
 const vm = new Vue({
     el: '#app',
     components: {
-        MyText: () => import(/* webpackChunkName: 'components/MyText' */ './components/MyText'),
+        MyText: () => import(
+            /* webpackChunkName: 'components/MyText' */
+            /* webpackPrefetch: true */
+            './components/MyText'
+        ),
     },
     data() {
         return {

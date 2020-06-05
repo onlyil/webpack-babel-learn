@@ -4,6 +4,7 @@
 <head>
   <%= require('raw-loader!./static/layout/meta.html').default %>
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="preload" href="../static/lib/vendors.dll.js" as="script">
   <style><%= require('!!raw-loader!./static/css/reset.css').default %></style>
 </head>
 
