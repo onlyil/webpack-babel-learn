@@ -26,7 +26,7 @@ const config = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules)/,
+        exclude: /(node_modules|lib)/,
         use: [
           'thread-loader',
           'babel-loader?cacheDirectory=true',

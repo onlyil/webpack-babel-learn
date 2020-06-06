@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import largeNumber, { minus } from '../../lib/large-number'
 
 export default {
     name: 'MyText',
@@ -10,7 +10,11 @@ export default {
     },
     render() {
         return (
-            <p>{ this.text }</p>
+            <div>
+                <p>{ this.text }</p>
+                <p>{ largeNumber(1, 2) }</p>
+                <p>{ minus(1, 2) }</p>
+            </div>
         )
     }
 }

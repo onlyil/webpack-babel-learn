@@ -5,11 +5,12 @@
   "author": "lin.cao",
   "license": "MIT",
   "scripts": {
-    "compile": "npx babel src --out-dir lib --watch",
+    "compile": "npx babel src --out-dir compile --watch",
     "dev": "cross-env NODE_ENV=development npx webpack-dev-server --hot --config webpack.config.js",
     "devBuild": "cross-env NODE_ENV=development npx webpack --config webpack.config.js --devtool=none",
     "build": "cross-env NODE_ENV=production npx webpack --config webpack.config.js",
-    "dll": "npx webpack --config webpack.dll.js"
+    "dll": "npx webpack --config webpack.dll.js",
+    "build:lib": "npx webpack --config webpack.lib.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
