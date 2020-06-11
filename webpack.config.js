@@ -1,3 +1,4 @@
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -18,11 +19,16 @@ const config = {
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
   entry: {
     main: './src/index.js',
-    home: './src/home.js',
+    home: './src/pages/home/index.js',
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
     chunkFilename: isDev ? '[name].chunk.js' : '[name].[chunkhash:8].chunk.js',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   module: {
     rules: [
@@ -101,7 +107,7 @@ const config = {
     // usedExports: true, // 标记未使用的 export，tree-shaking 基于此，production 默认启用
     splitChunks: {
       chunks: 'all',
-      name: 'commons',
+      name: isDev,
     },
   },
 }
