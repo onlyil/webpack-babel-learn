@@ -6,11 +6,11 @@
   "license": "MIT",
   "scripts": {
     "compile": "npx babel src --out-dir compile --watch",
-    "dev": "cross-env NODE_ENV=development npx webpack-dev-server --hot --config webpack.config.js",
-    "devBuild": "cross-env NODE_ENV=development npx webpack --config webpack.config.js --devtool=none",
-    "build": "cross-env NODE_ENV=production npx webpack --config webpack.config.js",
-    "dll": "npx webpack --config webpack.dll.js",
-    "build:lib": "npx webpack --config webpack.lib.js"
+    "dev": "cross-env NODE_ENV=development npx webpack-dev-server --hot --config build/webpack.config.js",
+    "devBuild": "cross-env NODE_ENV=development npx webpack --config build/webpack.config.js --devtool=none",
+    "build": "cross-env NODE_ENV=production npx webpack --config build/webpack.config.js",
+    "dll": "npx webpack --config build/webpack.dll.js",
+    "build:lib": "npx webpack --config build/webpack.lib.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -46,6 +46,7 @@
     "@babel/runtime-corejs3": "^7.9.2",
     "loader-runner": "^3.1.0",
     "loader-utils": "^2.0.0",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-server-renderer": "^2.6.11"
   }
 }

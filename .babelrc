@@ -11,6 +11,6 @@
       }
     ],
     "@babel/plugin-syntax-dynamic-import",
-    "./src/plugins/plugin.js"
+    // "./src/learn/plugins/plugin.js"
   ]
 }

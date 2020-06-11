@@ -17,9 +17,10 @@ const smp = new SpeedMeasureWebpackPlugin();
 const config = {
   mode: isDev ? 'development' : 'production',
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
+  context: path.resolve(__dirname, '..'),
   entry: {
-    main: './src/index.js',
-    home: './src/pages/home/index.js',
+    // main: './src/index.js',
+    home: './src/pages/home/entry-client.js',
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
@@ -27,7 +28,7 @@ const config = {
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, '../src'),
     },
   },
   module: {
@@ -53,20 +54,20 @@ const config = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    // new HtmlWebpackPlugin({
+    //   template: path.join(__dirname, '../index.html'),
+    //   title: 'webpack learn',
+    //   chunks: ['main'],
+    //   filename: 'index.html',
+    //   minify: {
+    //     collapseWhitespace: !isDev,
+    //     minifyCSS: !isDev,
+    //     minifyJS: !isDev,
+    //     removeComments: !isDev,
+    //   },
+    // }),
     new HtmlWebpackPlugin({
-      template: 'index.html',
-      title: 'webpack learn',
-      chunks: ['main'],
-      filename: 'index.html',
-      minify: {
-        collapseWhitespace: !isDev,
-        minifyCSS: !isDev,
-        minifyJS: !isDev,
-        removeComments: !isDev,
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: path.join(__dirname, '../index.html'),
       title: 'webpack home',
       chunks: ['home'],
       filename: 'home.html',
@@ -82,7 +83,7 @@ const config = {
     }),
     new OptimizeCssAssetsWebpackPlugin(),
     new webpack.DllReferencePlugin({
-      manifest: require('./static/lib/vendors-manifest.json'),
+      manifest: require('../static/lib/vendors-manifest.json'),
     }),
     new HardSourceWebpackPlugin(), // 模块缓存，速度提升明显
     // new CompressionWebpackPlugin(), // gzip

@@ -1,26 +1,16 @@
-import cssStyle from '@/style/css/index.css'
-import lessStyle from '@/style/less/index.less'
 import Vue from 'vue'
+import App from './App.js'
 
-const vm = new Vue({
-    el: '#app',
-    data() {
-        return {
-            text: 'aewsome!',
-            show: false,
-        }
-    },
-    methods: {
-        showMyText() {
-            this.show = true
-        },
-    },
-    render() {
-        return (
-            <div>
-                <h2 vOn:click={this.showMyText}>Welcome to Vue!</h2>
-                { this.show ? <MyText text={this.text} /> : null }
-            </div>
-        )
-    },
-})
+// 导出一个工厂函数，用于创建新的
+// 应用程序、router 和 store 实例
+const crateApp = () => {
+    const app = new Vue({
+        render: h => h(App),
+    })
+
+    return {
+        app,
+    }
+}
+
+export default crateApp
