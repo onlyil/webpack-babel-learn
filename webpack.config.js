@@ -7,6 +7,8 @@ const webpack = require('webpack')
 const SpeedMeasureWebpackPlugin = require('speed-measure-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+// const CompressionWebpackPlugin = require('compression-webpack-plugin')
+
 
 const isDev = process.env.NODE_ENV === 'development';
 const smp = new SpeedMeasureWebpackPlugin();
@@ -16,7 +18,7 @@ const config = {
   devtool: isDev ? 'cheap-module-eval-source-map' : 'none',
   entry: {
     main: './src/index.js',
-    // home: './src/home.js',
+    home: './src/home.js',
   },
   output: {
     filename: isDev ? '[name].js' : '[name].[chunkhash:8].js',
@@ -48,6 +50,20 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       title: 'webpack learn',
+      chunks: ['main'],
+      filename: 'index.html',
+      minify: {
+        collapseWhitespace: !isDev,
+        minifyCSS: !isDev,
+        minifyJS: !isDev,
+        removeComments: !isDev,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: 'index.html',
+      title: 'webpack home',
+      chunks: ['home'],
+      filename: 'home.html',
       minify: {
         collapseWhitespace: !isDev,
         minifyCSS: !isDev,
@@ -63,6 +79,7 @@ const config = {
       manifest: require('./static/lib/vendors-manifest.json'),
     }),
     new HardSourceWebpackPlugin(), // 模块缓存，速度提升明显
+    // new CompressionWebpackPlugin(), // gzip
     // new webpack.optimize.ModuleConcatenationPlugin(), // scope hoisting 作用域提升，production 默认启用
     // new BundleAnalyzerPlugin(), // 体积分析
 
