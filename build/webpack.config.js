@@ -17,28 +17,15 @@ const smp = new SpeedMeasureWebpackPlugin();
 
 const config  = merge(baseConfig, {
     entry: {
-        // main: './src/index.js',
-        home: './src/pages/home/entry-client.js',
+        index: './src/pages/home/entry-client.js',
     },
     plugins: [
         new CleanWebpackPlugin(),
-        // new HtmlWebpackPlugin({
-        //   template: path.join(__dirname, '../index.html'),
-        //   title: 'webpack learn',
-        //   chunks: ['main'],
-        //   filename: 'index.html',
-        //   minify: {
-        //     collapseWhitespace: !isDev,
-        //     minifyCSS: !isDev,
-        //     minifyJS: !isDev,
-        //     removeComments: !isDev,
-        //   },
-        // }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../index.html'),
             title: 'webpack home',
-            chunks: ['home'],
-            filename: 'home.html',
+            chunks: ['index'],
+            filename: 'index.html',
             minify: {
                 collapseWhitespace: !isDev,
                 minifyCSS: !isDev,

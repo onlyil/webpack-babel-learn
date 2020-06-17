@@ -1,5 +1,12 @@
 export default {
     name: 'App',
+    components: {
+        MyText: () => import(
+            /* webpackChunkName: 'components/MyText' */
+            /* webpackPrefetch: true */
+            '@/components/MyText'
+        ),
+    },
     data() {
         return {
             text: 'aewsome!',
