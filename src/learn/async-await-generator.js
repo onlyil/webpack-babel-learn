@@ -59,21 +59,22 @@ setTimeout(() => {
 function gen$(_context) {
     while (1) {
         switch (_context.prev = _context.next) {
-        case0:
-        _context.next = 2;
-        return 'result1';
+            case 0:
+            _context.next = 2;
+            return 'result1';
 
-        case2:
-        _context.next = 4;
-        return 'result2';
+            case 2:
+            _context.next = 4;
+            return 'result2';
 
-        case4:
-        _context.next = 6;
-        return 'result3';
+            case 4:
+            _context.next = 6;
+            return 'result3';
 
-        case6:
-        case "end":
-        return _context.stop();
+            case 6:
+            case "end":
+            return _context.stop();
+        }
     }
 }
 
