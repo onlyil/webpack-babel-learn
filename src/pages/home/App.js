@@ -1,3 +1,5 @@
+import * as foo from '../../learn/async-await-generator'
+
 export default {
     name: 'App',
     components: {

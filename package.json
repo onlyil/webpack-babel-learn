@@ -26,6 +26,7 @@
     "compression-webpack-plugin": "^4.0.0",
     "cross-env": "^7.0.2",
     "css-loader": "^3.4.2",
+    "cz-conventional-changelog": "3.2.0",
     "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^4.0.3",
     "less": "^3.11.1",
@@ -49,5 +50,10 @@
     "loader-utils": "^2.0.0",
     "vue": "^2.6.11",
     "vue-server-renderer": "^2.6.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
