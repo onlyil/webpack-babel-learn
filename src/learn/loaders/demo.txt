@@ -1,1 +1,3 @@
 foo bar
+// loader 的执行顺序：从后往前
+// compose = (a, b) => (...args) => a(b(...args))
